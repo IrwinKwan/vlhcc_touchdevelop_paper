@@ -325,15 +325,13 @@
 
 % *** PDF, URL AND HYPERLINK PACKAGES ***
 %
-%\usepackage{url}
+\usepackage{url}
 % url.sty was written by Donald Arseneau. It provides better support for
 % handling and breaking URLs. url.sty is already installed on most LaTeX
 % systems. The latest version can be obtained at:
 % http://www.ctan.org/tex-archive/macros/latex/contrib/misc/
 % Read the url.sty source comments for usage information. Basically,
 % \url{my_url_here}.
-
-
 
 
 
@@ -349,6 +347,9 @@
 
 
 \begin{document}
+	
+\newcommand{\note}[1]{**{#1}}
+\newcommand{\boldnote}[1]{\textbf{**{#1}}}
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
@@ -402,7 +403,8 @@ Email: {sergii,kwan}@eecs.oregonstate.edu}
 
 \begin{abstract}
 %\boldmath
-As programming becomes an increasingly valuable skillset in the modern world, there are many methods available to learn how to program. One method gaining popularity with more complex web apps is that of the interactive tutorial. We examine users’ published scripts on the TouchDevelop platform and compare interactive tutorials to traditional, copy-and-paste tutorial methods in terms of user outcomes.To accomplish this, we build a tool to facilitate large-scale data capture and analysis of TouchDevelop users and scripts. This tool is also capable of facilitating a much broader scope of research questions concerning the TouchDevelop population.
+As programming becomes an increasingly valuable skillset in the modern world, there are many methods available to learn how to program. One method gaining popularity with more complex web apps is that of the interactive tutorial. We examine users’ published scripts on the TouchDevelop platform and compare interactive tutorials to traditional, copy-and-paste tutorial methods in terms of user outcomes.
+To accomplish this, we build a tool to facilitate large-scale data capture and analysis of TouchDevelop users and scripts. This tool is also capable of facilitating a much broader scope of research questions concerning the TouchDevelop population.
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
 % This preserves the distinction between vectors and scalars. However,
