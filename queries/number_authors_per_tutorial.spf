@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>touchdevelop</string>
+			<key>host</key>
+			<string>127.0.0.1</string>
+			<key>kcid</key>
+			<string>7061165403842610826</string>
+			<key>name</key>
+			<string>touchdevelop</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPTCPIPConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>irwin</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>utf8</string>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJX
+			TlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAF
+			gAdUdHlwZVRyb3dzXxAdU2VsZWN0aW9uRGV0YWlsVHlwZU5TSW5k
+			ZXhTZXTSFwsYGVxOU1JhbmdlQ291bnQQAIAG0hscHR5aJGNsYXNz
+			bmFtZVgkY2xhc3Nlc1pOU0luZGV4U2V0oh8gWk5TSW5kZXhTZXRY
+			TlNPYmplY3TSGxwiI1xOU0RpY3Rpb25hcnmiIiBfEA9OU0tleWVk
+			QXJjaGl2ZXLRJidUZGF0YYABAAgAEQAaACMALQAyADcAQABGAE0A
+			VQBgAGcAagBsAG4AcQBzAHUAdwB8AIEAoQCmALMAtQC3ALwAxwDQ
+			ANsA3gDpAPIA9wEEAQcBGQEcASEAAAAAAAACAQAAAAAAAAAoAAAA
+			AAAAAAAAAAAAAAABIw==
+			</data>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {693, 456}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>SELECT 'Number of authors who published a script', COUNT(DISTINCT a.id)
+FROM authors a INNER JOIN scripts s ON s.author_id = a.id
+
+UNION
+
+SELECT 'Number of authors who completed 0 tutorials', COUNT(authors) 
+FROM (
+
+SELECT a.id authors
+FROM authors a
+INNER JOIN scripts s ON s.author_id = a.id
+LEFT JOIN tutorials_by_author ta ON a.id = ta.author_id
+WHERE ta.author_id IS NULL
+
+)
+
+UNION
+
+SELECT 'Number of authors who completed 1 tutorial', COUNT(*) FROM
+(SELECT COUNT(DISTINCT author_id)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 1) onetutorial
+
+UNION
+
+SELECT 'Number of authors who completed 2 tutorials', COUNT(*) FROM
+(SELECT COUNT(DISTINCT author_id)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2) twotutorials
+
+UNION
+
+SELECT 'Number of authors who completed 3+ tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) &lt; 3) threetutorials
+</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>202</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>SELECT 'Number of authors who published a script', COUNT(DISTINCT a.id)
+FROM authors a INNER JOIN scripts s ON s.author_id = a.id
+
+UNION
+
+SELECT 'Number of authors who completed zero tutorials', COUNT(DISTINCT s.author_id) FROM
+scripts s
+WHERE
+author_id NOT IN (SELECT author_id FROM tutorials_by_author WHERE is_completed = TRUE)
+
+UNION
+
+SELECT 'Number of authors who completed 1 tutorial', COUNT(*) FROM
+(SELECT COUNT(DISTINCT author_id)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 1) onetutorial
+
+UNION
+
+SELECT 'Number of authors who completed 2 tutorials', COUNT(*) FROM
+(SELECT COUNT(DISTINCT author_id)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2) twotutorials
+
+UNION
+
+SELECT 'Number of authors who completed 3+ tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) &lt; 3) threetutorials</string>
+		<string>SELECT 'Number of authors who published ascript', COUNT(DISTINCT s.author_id)
+FROM (SELECT author_id FROM scripts UNION SELECT author_id FROM tutorials) scripts_and_tutorials
+
+UNION
+
+SELECT 'Number of authors who completed zero tutorials', COUNT(DISTINCT s.author_id) FROM
+scripts s
+WHERE
+author_id NOT IN (SELECT author_id FROM tutorials_by_author WHERE is_completed = TRUE)
+
+UNION
+
+SELECT 'Number of authors who completed 1 tutorial', COUNT(*) FROM
+(SELECT COUNT(DISTINCT author_id)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 1) onetutorial
+
+UNION
+
+SELECT 'Number of authors who completed 2 tutorials', COUNT(*) FROM
+(SELECT COUNT(DISTINCT author_id)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2) twotutorials
+
+UNION
+
+SELECT 'Number of authors who completed 3+ tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) &lt; 3) threetutorials</string>
+		<string>SELECT 'Number of authors who published a script', COUNT(DISTINCT s.author_id) FROM
+scripts s
+
+UNION
+
+SELECT 'Number of authors who completed zero tutorials', COUNT(DISTINCT s.author_id) FROM
+scripts s
+WHERE
+author_id NOT IN (SELECT author_id FROM tutorials_by_author WHERE is_completed = TRUE)
+
+UNION
+
+SELECT 'Number of authors who completed 1 tutorial', COUNT(*) FROM
+(SELECT COUNT(DISTINCT author_id)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 1) onetutorial
+
+UNION
+
+SELECT 'Number of authors who completed 2 tutorials', COUNT(*) FROM
+(SELECT COUNT(DISTINCT author_id)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2) twotutorials
+
+UNION
+
+SELECT 'Number of authors who completed 3+ tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) &lt; 3) threetutorials</string>
+		<string>SELECT 'Number of authors who completed zero tutorials', COUNT(DISTINCT s.author_id) FROM
+scripts s
+WHERE
+author_id NOT IN (SELECT author_id FROM tutorials_by_author WHERE is_completed = TRUE)
+
+UNION
+
+SELECT 'Number of authors who completed 1 tutorial', COUNT(*) FROM
+(SELECT COUNT(DISTINCT author_id)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 1) onetutorial
+
+UNION
+
+SELECT 'Number of authors who completed 2 tutorials', COUNT(*) FROM
+(SELECT COUNT(DISTINCT author_id)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2) twotutorials
+
+UNION
+
+SELECT 'Number of authors who completed 3+ tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) &lt; 3) threetutorials</string>
+		<string>SELECT 'Number of authors who completed zero tutorials', COUNT(DISTINCT s.author_id) FROM
+scripts s
+WHERE
+author_id NOT IN (SELECT author_id FROM tutorials_by_author WHERE is_completed = TRUE)
+
+UNION
+
+SELECT 'Number of authors who completed 1 tutorial', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 1) onetutorial
+
+UNION
+
+SELECT 'Number of authors who completed 2 tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2) twotutorials
+
+UNION
+
+SELECT 'Number of authors who completed 3+ tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) &lt; 3) threetutorials</string>
+		<string>SELECT 'Number of authors who completed zero tutorials', COUNT(DISTINCT author_id) FROM
+scripts s
+WHERE
+author_id NOT IN (SELECT author_id FROM tutorials_by_author WHERE is_completed = TRUE)
+
+UNION
+
+SELECT 'Number of authors who completed 1 tutorial', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 1) onetutorial
+
+UNION
+
+SELECT 'Number of authors who completed 2 tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2) twotutorials
+
+UNION
+
+SELECT 'Number of authors who completed 3+ tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) &lt; 3) threetutorials</string>
+		<string>SELECT 'Number of authors who completed zero tutorials', COUNT(*) FROM
+scripts s
+WHERE
+author_id NOT IN (SELECT author_id FROM tutorials_by_author WHERE is_completed = TRUE)
+
+UNION
+
+SELECT 'Number of authors who completed 1 tutorial', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 1) onetutorial
+
+UNION
+
+SELECT 'Number of authors who completed 2 tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2) twotutorials
+
+UNION
+
+SELECT 'Number of authors who completed 3+ tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) &lt; 3) threetutorials</string>
+		<string>SELECT 'Number of authors who completed zero tutorials', COUNT(*) FROM
+scripts s
+WHERE
+author_id NOT IN (SELECT author_id FROM tutorials_by_author WHERE is_completed = FALSE)
+
+UNION
+
+SELECT 'Number of authors who completed 1 tutorial', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 1) onetutorial
+
+UNION
+
+SELECT 'Number of authors who completed 2 tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2) twotutorials
+
+UNION
+
+SELECT 'Number of authors who completed 3+ tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) &lt; 3) threetutorials</string>
+		<string>SELECT 'Number of authors who completed zero tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 0) zerotutorial
+
+UNION
+
+SELECT 'Number of authors who completed 1 tutorial', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 1) onetutorial
+
+UNION
+
+SELECT 'Number of authors who completed 2 tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2) twotutorials
+
+UNION
+
+SELECT 'Number of authors who completed 3+ tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) &lt; 3) threetutorials</string>
+		<string>SELECT 'Number of authors who completed 1 tutorial', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 1) onetutorial
+
+UNION
+
+SELECT 'Number of authors who completed 2 tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2) twotutorials
+
+UNION
+
+SELECT 'Number of authors who completed 3 tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 3) threetutorials</string>
+		<string>SELECT 'Number of authors who completed 1 tutorial', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 1) onetutorial
+
+UNION
+
+SELECT 'Number of authors who completed 2 tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2) twotutorials
+
+UNION
+
+SELECT 'Number of authors who completed 3 tutorials', COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2) threetutorials</string>
+		<string>SELECT COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2) two</string>
+		<string>SELECT COUNT(*) FROM
+(SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2)</string>
+		<string>SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2</string>
+		<string>SELECT COUNT(*)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY COUNT(author_id)
+HAVING COUNT(author_id) = 2</string>
+		<string>SELECT COUNT(author_id)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2</string>
+		<string>SELECT COUNT(COUNT(author_id))
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2</string>
+		<string>SELECT author_id, COUNT(author_id)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2</string>
+		<string>SELECT id, COUNT(author_id)
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2</string>
+		<string>SELECT *
+FROM tutorials_by_author ta
+WHERE is_completed = TRUE
+GROUP BY author_id
+HAVING COUNT(author_id) = 2</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.6.13</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>
