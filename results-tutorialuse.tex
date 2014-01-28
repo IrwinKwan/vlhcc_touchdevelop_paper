@@ -2,55 +2,120 @@
 
 \subsection{\rqtutorial}
 
-In general, TouchDevelop script authors are only somewhat willing to attempt tutorials. Of the 18022 users who have published at least one script, we observed that only 2981 (16.5\%) attempted a tutorial and 2513 (14\%) of all users completed one or more tutorials.
+% -- Running on Jan 27 db:
+% Authors who published one or more scripts	19122
+% Authors who did not attempt a tutorial	17740
+% Authors attempted or completed a tutorial	1382
+% Authors who attempted (but did not complete) a tutorial	578
+% Authors who completed exactly one tutorial	708
+% Authors who completed two or more tutorials	96
 
-\note{Implication?} Despite this finding, our data still shows that a large number of users have successfully published scripts. This suggests that many TouchDevelop users are either familiar with programming and did not require tutorials or that they learned or were taught TouchDevelop offline (for example, as part of an outreach effort or by friends). There is also the possibility that users generally avoided the official tutorials and used other resources, but non-Microsoft tutorials are rather rare. \note{One way to explore this further is to examine the features of scripts that people who didn't use tutorials had. If they are filled with advanced constructs then we can assume that they have some prior knowledge}
+\def\numauthors{19122}%
+\def\authorsNoUsedTutorials{17740}%
+\def\authorsUsedTutorials{1382}%
+\def\authorsZeroTutorials{578}%
+\def\authorsOneTutorials{708}%
+\def\authorsTwoTutorials{96}%
+
+\def\totalcompletions{\FPeval\result{\authorsOneTutorials+\authorsTwoTutorials}%
+\FPround\result{\result}{0}%
+\result%
+}
+
+In general, TouchDevelop script authors are only somewhat willing to attempt tutorials.
+Of the \numauthors{} users who have published at least one script, we observed that only \authorsUsedTutorials{} (7.2\%) attempted a tutorial and only \totalcompletions{} (4.2\%) of all users completed one or more tutorials.
+
 
 \begin{table}
 	\centering
 	\begin{tabular}{rr}
 		\toprule
-		Authors who published one or more scripts & 18015 (100\%) \\
+		Authors who published one or more scripts & \numauthors{} (100\%)\\
 		\midrule
-		Authors who did not attempt a tutorial & 15045 (83.5\%) \\
-		Authors who attempted or completed a tutorial & 2970 (16.5\%)\\
+		Authors who did not attempt a tutorial & \authorsNoUsedTutorials{} (92.8\%)\\
+		Authors who attempted or completed a tutorial & \authorsUsedTutorials{} (7.2\%)\\
 		\midrule
-		Authors who attempted (but did not complete) a tutorial & 468 (2.6\%) \\
-		Authors who completed one tutorial & 1977 (11.0\%) \\
-		Authors who completed more than tutorial & 525 (3.0\%) \\
+		Authors who attempted (but did not complete) a tutorial & \authorsZeroTutorials{} (3.0\%)\\
+		Authors who completed one tutorial & \authorsOneTutorials{} (3.7\%)\\
+		Authors who completed more than tutorial & \authorsTwoTutorials{} (0.5\%)\\
 		\bottomrule
 	\end{tabular}
-	\caption{Proportion of TouchDevelop users who complete tutorials. Only 16.5\% of users attempt tutorials and 14\% complete at least one tutorial.}
+	\caption{Proportion of TouchDevelop users who complete tutorials. Only 7.2\% of users attempt tutorials and 4.2\% complete one or more tutorials.}
 	\label{tab:tutorial_completions}
 \end{table}
 
+The following tutorials were the ones that were most frequently completed by our participants.
 
+% Attempts
+% scratch pong tutorial	1
+% scratch cat tutorial	1
+% pixels tutorial	1
+% bouncing monster tutorial	4
+% Build Your First App M4T3	8
+% Diamonds and Rubys	23
+% bubble popper tutorial	26
+% physics game walkthrough	279
+% Bounce (physics)	279
+% first steps with drawing	417
 
+% Completions
+% Build Your First App M3T4	1
+% Dice tutorial	1
+% data	1
+% doitall browser	2
+% amazing script 2	2
+% for each	3
+% soundboard tutorial	4
+% doitall browser 4	9
+% Diamonds and Rubys	27
+% crazy holiday football demo	34
+% accelero-turtle	34
+% Build Your First App M3T2	40
+% scratch pong tutorial	81
+% beatbox tutorial	260
+% pixels tutorial	381
 
-\note{The correlations are...} The correlations appear in Table \ref{tab:correlations_author}. The correlations are really strong for a lot of stuff and this needs to be interpreted. Many of these make sense, as one would expect that the more scripts someone has, the more features they'll use and the more subscribers/score they'll get.
-
-% latex table generated in R 3.0.1 by xtable 1.7-1 package
-% Fri Jan 17 13:00:05 2014
-\begin{table}[ht]
-\centering
-\begin{tabular}{rllllll}
-  \hline
- & Scripts & Tutorials completed & Features & Days active & Positive reviews & Followers \\ 
-  \hline
-number\_of\_scripts &  &  &  &  &  &  \\ 
-  number\_of\_completed\_tutorials &  0.50*** &  &  &  &  &  \\ 
-  features &  0.26*** &  0.15*** &  &  &  &  \\ 
-  activedays &  0.31*** &  0.08*  &  0.74*** &  &  &  \\ 
-  receivedpositivereviews &  0.09**  &  0.05  &  0.52*** &  0.60*** &  &  \\ 
-  subscribers &  0.07*  &  0.11*** &  0.34*** &  0.43*** &  0.77*** &  \\ 
-  score &  0.28*** &  0.10**  &  0.91*** &  0.90*** &  0.70*** &  0.52*** \\ 
-   \hline
-\end{tabular}
-\label{tab:correlations_author}
-\caption{Correlations between counts of items per author \note{this needs a better caption}}
+\begin{table}
+	\centering
+	\begin{tabular}{lrr}
+		\toprule
+		Tutorial & Attempts & Completions\\\midrule
+		scratch cat tutorial &	1 & 0 \\
+		bouncing monaster tutorial &	4 & 0 \\
+		Build Your First App M4T3 &	8 &	0\\
+		bubble popper tutorial & 26 & 0 \\
+		physics game walkthrough/Bounce (physics) &	279 & 0 \\
+		first steps with drawing & 417 & 0 \\
+		Build Your First App M3T4 & 0 & 1\\
+		Dice tutorial &	0 & 1\\
+		data & 0 & 1\\
+		doital browser & 0 & 2\\
+		amazing script 2 & 0 & 2\\
+		for each & 0 & 3\\
+		soundboard tutorial & 0 & 4\\
+		doitall browser 4 &	0 &	9\\
+		Diamonds and Rubys &	23 &	27\\
+		crazy holiday football demo &	0 &	34\\
+		accelero-turtle &	0 &	34\\
+		Build Your First App M3T2 & 0 &	40\\
+		scratch pong tutorial &	1 &	81\\
+		beatbox tutorial &	0 &	260\\
+		pixels tutorial &	1 &	381\\
+		\bottomrule
+	\end{tabular}
+	\caption{Proportion of TouchDevelop users who complete tutorials. Only 7.2\% of users attempt tutorials and 4.2\% complete one or more tutorials.}
+	\label{tab:tutorial_completions}
 \end{table}
 
+% Some notes about the tutorials:
+% first steps with drawing https://www.touchdevelop.com/api/ayyxc is no longer available publically, it can't be accessed.
 
+One severe limitation of this data is that there are very few attempts on tutorials. One reason for this would be because of data collection. Since we could only collect published scripts, authors who attempted tutorials but did not finish them would have to publish them explicitly, which would not be expected if the script is unfinished or not working.
+
+\note{Implication?} Despite this finding, our data still shows that a large number of users have successfully published scripts. This suggests that many TouchDevelop users are either familiar with programming and did not require tutorials or that they learned or were taught TouchDevelop offline (for example, as part of an outreach effort or by friends). There is also the possibility that users generally avoided the official tutorials and used other resources, but non-Microsoft tutorials are rather rare. \note{One way to explore this further is to examine the features of scripts that people who didn't use tutorials had. If they are filled with advanced constructs then we can assume that they have some prior knowledge}
+
+
+\note{Data limitation: it seems that physics game walkthrough and Bounce (physics) have code fragment overlaps, as they co-occur in the database. For this reason we should consider them to be a single data point, we cannot read into it further.}
 
 
 
